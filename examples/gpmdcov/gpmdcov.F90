@@ -1230,7 +1230,7 @@ contains
       if(lt%verbose >= 1 .and. myRank == 1)write(*,*)"Time for Rest "//to_string(mls() - mls_i)//" ms"
       if(lt%verbose >= 1 .and. myRank == 1)write(*,*)"Time for Cumul11 "//to_string(mls() - mls_ii)//" ms"
 
-      if(lt%verbose >= 1 .and. myRank == 1)write(*,*)"Time for MD iter "//to_string(mls() - mls_ii)//" ms"
+      if(lt%verbose >= 0 .and. myRank == 1)write(*,*)"Time for MD iter "//to_string(mls() - mls_ii)//" ms"
 
       ! Save MD state each 120 steps
       if(mod(mdstep,150) == 0)call gpmd_dump()
@@ -1664,12 +1664,15 @@ contains
           if(reshuffle(j,i)>0)write(*,*)i,j,reshuffle(j,i),gpat%sgraph(reshuffle(j,i))%lsize
           costperrank = costperrank + real((gpat%sgraph(reshuffle(j,i))%lsize)**3)
         enddo
-        write(*,*)"Cost per rank =", costperrank
         costperrankmax = max(costperrank,costperrankmax)
         costperrankmin = min(costperrank,costperrankmin)
       enddo
-        write(*,*)"The following is a measure of the asymmetry"
-        write(*,*)"DeltaCostPerrank/CostPerrankMin =", (costperrankmax - costperrankmin)/costperrankmin
+
+        if(lt%verbose >= 1)then
+          write(*,*)"The following is a measure of the asymmetry of the work load"
+          write(*,*)"DeltaCostPerrank/CostPerrankMin =", (costperrankmax - costperrankmin)/costperrankmin
+          write(*,*)"DeltaCostPerrank/CostPerrankMin =", (costperrankmax - costperrankmin)/costperrankmin
+        endif
 
   end subroutine gpmd_reshuffle
 
