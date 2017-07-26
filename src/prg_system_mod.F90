@@ -190,8 +190,10 @@ module prg_system_mod
   end type system_type
 
   public :: prg_parse_system, prg_get_nameandext, prg_make_random_system, prg_write_system, prg_write_trajectory
-  public :: prg_get_origin, prg_get_covgraph, prg_get_subsystem, prg_translateandfoldtobox, prg_molpartition, prg_get_partial_atomgraph
-  public :: prg_destroy_subsystems, prg_get_covgraph_h, prg_collect_graph_p, prg_merge_graph, prg_merge_graph_adj, prg_adj2bml, prg_graph2bml
+  public :: prg_get_origin, prg_get_covgraph, prg_get_subsystem, prg_translateandfoldtobox, prg_molpartition
+  public :: prg_get_partial_atomgraph
+  public :: prg_destroy_subsystems, prg_get_covgraph_h, prg_collect_graph_p, prg_merge_graph, prg_merge_graph_adj
+  public :: prg_adj2bml, prg_graph2bml
   public :: prg_graph2vector, prg_vector2graph, prg_sortadj, prg_get_recip_vects, prg_translatetogeomcandfoldtobox
   public :: prg_write_trajectoryandproperty, prg_get_distancematrix
 
