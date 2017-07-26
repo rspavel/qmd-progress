@@ -122,7 +122,8 @@ contains
 
    !$omp parallel do default(none) firstprivate(j) &
    !$omp private(ra,rb,dimi,dimj,ii,jj) &
-   !$omp shared(nats,coordinate,hindex,spindex, intPairsS,intPairsH,threshold,lattice_vector,norbi,onsitesH,onsitesS,ham_bml,over_bml) &
+   !$omp shared(nats,coordinate,hindex,spindex, intPairsS,intPairsH,threshold,lattice_vector,norbi,onsitesH,onsitesS,ham_bml,&
+   !$omp over_bml) &
    !$omp shared(block)
     do i = 1, nats
       ra(:) = coordinate(:,i)
